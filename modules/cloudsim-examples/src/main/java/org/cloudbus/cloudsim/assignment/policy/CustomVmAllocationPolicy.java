@@ -92,14 +92,20 @@ public class CustomVmAllocationPolicy extends VmAllocationPolicy {
                         }
                     }
                 }else if (vmAllocationPolicy.equalsIgnoreCase(FIRST_FIT) || vmAllocationPolicy.equalsIgnoreCase(FFD)) {
-                    List<Host> hostList = this.getHostList();
-                    int lastIndex = hostList.size() - 1;
-                    for (int i = 0; i < hostList.size(); i++) {
-                        Host host = hostList.get(lastIndex);
-                        if (host.isSuitableForVm(vm)) {
-                            idx = lastIndex;
+//                    List<Host> hostList = this.getHostList();
+//                    int lastIndex = hostList.size() - 1;
+//                    for (int i = 0; i < hostList.size(); i++) {
+//                        Host host = hostList.get(lastIndex);
+//                        if (host.isSuitableForVm(vm)) {
+//                            idx = lastIndex;
+//                        }
+//                        lastIndex = --lastIndex % hostList.size();
+//                    }
+                    for (int i = 0; i < freePesTmp.size(); i++) {
+                        if (freePesTmp.get(i) < min && freePesTmp.get(i) >= requiredPes) {
+                            min = freePesTmp.get(i);
+                            idx = i;
                         }
-                        lastIndex = --lastIndex % hostList.size();
                     }
                 }else if(vmAllocationPolicy.equalsIgnoreCase(CSVP)){
                     int mid = CloudSimAssignmentConstent.totalVms / 2;
@@ -136,17 +142,28 @@ public class CustomVmAllocationPolicy extends VmAllocationPolicy {
     }
 
     private void printVMAllocation(Vm vm, String selectedPolicy) {
+        StringBuilder builder = new StringBuilder();
         String INDENT = "   ";
         if (vm.getId ()==0) {//FIRST VM
             Log.printLine("============================================================================");
+            builder.append("============================================================================\n");
             Log.printLine("Vm ID" + INDENT + "Vm's PEs" + INDENT + "Host's ID" + INDENT + "Host's Allocated PEs" + INDENT + "Host's Free PEs");
+            builder.append("Vm ID").append(INDENT).append("Vm's PEs").append(INDENT).append("Host's ID").append(INDENT)
+                    .append("Host's Allocated PEs").append(INDENT).append("Host's Free PEs\n");
         }
         int hostAllocatedPes = (vm.getHost().getNumberOfPes() - getFreePes().get(vm.getHost().getId()));
         int hostFreePesAfterAfterAllocation = vm.getHost().getNumberOfFreePes() - hostAllocatedPes;
         Log.print(INDENT + vm.getId() + INDENT + INDENT + INDENT + vm.getNumberOfPes() + INDENT + INDENT + INDENT);
         Log.printLine(vm.getHost().getId() + INDENT + INDENT + INDENT + INDENT + hostAllocatedPes + INDENT + INDENT
                     + INDENT + INDENT + INDENT + INDENT + INDENT + hostFreePesAfterAfterAllocation);
+        builder.append(INDENT).append(vm.getId()).append(INDENT).append(INDENT).append(INDENT).append(vm.getNumberOfPes())
+                .append(INDENT).append(INDENT).append(INDENT).append(vm.getHost().getId()).append(INDENT).append(INDENT)
+                .append(INDENT).append(INDENT).append(hostAllocatedPes).append(INDENT).append(INDENT).append(INDENT)
+                .append(INDENT).append(INDENT).append(INDENT).append(INDENT).append(hostFreePesAfterAfterAllocation);
+        this.writeFile(builder.toString());
         if (vm.getId() == CloudSimAssignmentConstent.totalVms -1) {//LAST VM
+            Log.printLine("============================================================================");
+            this.writeFile("============================================================================");
             printHostAllocation(selectedPolicy);
         }
     }
