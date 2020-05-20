@@ -32,6 +32,10 @@ public class CloudSimAssignment {
 	private static List<Vm> vmlist;
 
 	public static void main(String[] args) {
+		runApp();
+	}
+
+	private static void runApp() {
 		Log.printLine("Starting CloudSimAssignment...");
 
 		try {
@@ -142,8 +146,6 @@ public class CloudSimAssignment {
 			Log.printLine("Unwanted errors happen");
 		}
 	}
-
-
 
 
 	/**
