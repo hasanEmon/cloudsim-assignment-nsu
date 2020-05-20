@@ -71,12 +71,20 @@ public class CloudSimAssignment {
 				int range = max - min + 1;
 				int peNumber = min + (int) (Math.random() * range);
 				randomPes.add(peNumber) ;
+//				int[] test = {5,2,6,1,3,5,1,3,4,2};
+//				randomPes.add(test[i]) ;
 			}
 			String vmm = "Xen"; // VMM name
 
 			if(CloudSimAssignmentConstent.allocationPolicy.equalsIgnoreCase("FFD")
-			|| CloudSimAssignmentConstent.allocationPolicy.equalsIgnoreCase("BFD")) {
-				Collections.sort(randomPes, Collections.reverseOrder());
+					|| CloudSimAssignmentConstent.allocationPolicy.equalsIgnoreCase("BFD")) {
+				randomPes.sort(Collections.reverseOrder());
+			}
+
+			if (CloudSimAssignmentConstent.allocationPolicy.equalsIgnoreCase("CSVP")) {
+				int mid = randomPes.size()/2;
+				randomPes.subList(0, mid).sort(Comparator.reverseOrder());
+				randomPes.subList(mid, randomPes.size()).sort(Comparator.reverseOrder());
 			}
 
 			// create VM list
