@@ -7,12 +7,15 @@ import org.cloudbus.cloudsim.VmAllocationPolicy;
 import org.cloudbus.cloudsim.assignment.CloudSimAssignmentConstent;
 import org.cloudbus.cloudsim.core.CloudSim;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.util.*;
 
 public class CustomVmAllocationPolicy extends VmAllocationPolicy {
+
+    private final String base = System.getProperty("user.dir");
+    private final String filePath = base + "\\modules\\cloudsim-examples\\src\\main\\java\\org\\cloudbus\\cloudsim\\assignment\\output.txt";
 
     /**
      * The map between each VM and its allocated host.
@@ -64,7 +67,7 @@ public class CustomVmAllocationPolicy extends VmAllocationPolicy {
         int requiredPes = vm.getNumberOfPes();
         boolean result = false;
         int tries = 0;
-        List<Integer> freePesTmp = new ArrayList<>(getFreePes());
+        List<Integer> freePesTmp = new ArrayList<>(this.getFreePes());
 
         if (!getVmTable().containsKey(vm.getUid())) { // if this vm was not created
             do {// we still trying until we find a host or until we try all of them
@@ -82,7 +85,6 @@ public class CustomVmAllocationPolicy extends VmAllocationPolicy {
                 String FIRST_FIT = "firstfit";
 
                 if (vmAllocationPolicy.equalsIgnoreCase(BEST_FIT) || vmAllocationPolicy.equalsIgnoreCase(BFD)) {
-
                     for (int i = 0; i < freePesTmp.size(); i++) {
                         if (freePesTmp.get(i) < min && freePesTmp.get(i) > requiredPes) {
                             min = freePesTmp.get(i);
@@ -97,12 +99,18 @@ public class CustomVmAllocationPolicy extends VmAllocationPolicy {
                         if (host.isSuitableForVm(vm)) {
                             idx = lastIndex;
                         }
-
                         lastIndex = --lastIndex % hostList.size();
                     }
                 }else if(vmAllocationPolicy.equalsIgnoreCase(CSVP)){
-                    //TODO
-
+                    for (int i = 0; i < freePesTmp.size(); i++) {
+                        if (freePesTmp.get(i) > max && idx < 5) {
+                            max = freePesTmp.get(i);
+                            idx = i;
+                        } else if (idx > 5 &&freePesTmp.get(i) < min && freePesTmp.get(i) > requiredPes) {
+                            min = freePesTmp.get(i);
+                            idx = i;
+                        }
+                    }
                 }else {
                     //default worst fit
                     for (int i = 0; i < freePesTmp.size(); i++) {
@@ -121,7 +129,7 @@ public class CustomVmAllocationPolicy extends VmAllocationPolicy {
                         getVmTable().put(vm.getUid(), host);
                         getUsedPes().put(vm.getUid(), requiredPes);
                         getFreePes().set(idx, getFreePes().get(idx) - requiredPes);
-                        printVMAllocation(vm) ; // Printing allocation information
+                        printVMAllocation(vm, vmAllocationPolicy) ; // Printing allocation information
                         result = true;
                         break;
                 } else {
@@ -134,7 +142,7 @@ public class CustomVmAllocationPolicy extends VmAllocationPolicy {
         return result;
     }
 
-    private void printVMAllocation(Vm vm) {
+    private void printVMAllocation(Vm vm, String selectedPolicy) {
         String INDENT = "   ";
         if (vm.getId ()==0) {//FIRST VM
             Log.printLine("============================================================================");
@@ -146,11 +154,11 @@ public class CustomVmAllocationPolicy extends VmAllocationPolicy {
         Log.printLine(vm.getHost().getId() + INDENT + INDENT + INDENT + INDENT + hostAllocatedPes + INDENT + INDENT
                     + INDENT + INDENT + INDENT + INDENT + INDENT + hostFreePesAfterAfterAllocation);
         if (vm.getId() == CloudSimAssignmentConstent.totalVms -1) {//LAST VM
-            printHostAllocation();
+            printHostAllocation(selectedPolicy);
         }
     }
 
-    private void printHostAllocation() {
+    private void printHostAllocation(String policyName) {
         int hostUnderU = 0;
         int hostOverU = 0;
         int hostFree = 0;
@@ -165,13 +173,53 @@ public class CustomVmAllocationPolicy extends VmAllocationPolicy {
                 hostOverU++;
             }
         }
-        Log.printLine ("====================================================================");
-        Log.printLine ("Total Host          : " + hostTotal);
-        Log.printLine ("Over Utilized Host  : " + hostOverU);
-        Log.printLine ("Under Utilized Host : " + hostUnderU);
-        Log.printLine ("Free Host           : " + hostFree );
-        Log.printLine("====================================================================");
+
+        StringBuilder content = new StringBuilder();
+//        Log.printLine ("====================================================================");
+//        Log.printLine("Selected algorithm   :" + policyName);
+//        Log.printLine ("Total Host          : " + hostTotal);
+//        Log.printLine ("Over Utilized Host  : " + hostOverU);
+//        Log.printLine ("Under Utilized Host : " + hostUnderU);
+//        Log.printLine ("Free Host           : " + hostFree );
+//        Log.printLine("====================================================================");
+
+        content.append("Selected algorithm  : ").append(policyName).append("\n")
+                .append("====================================================================\n")
+                .append("Total Host          : ").append(hostTotal).append("\n")
+                .append("Over Utilized Host  : ").append(hostOverU).append("\n")
+                .append("Under Utilized Host : ").append(hostUnderU).append("\n")
+                .append("Free Host           : ").append(hostFree).append("\n")
+                .append("====================================================================");
+        Log.printLine(content.toString());
+        this.writeFile(content.toString());
     }
+
+    private void writeFile(String line) {
+        try {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+                line = this.readFile().length() == 0 || this.readFile() == null ? line : "\n" + line;
+                writer.append(line);
+            }
+        } catch (Exception e) {
+            Log.print(e);
+        }
+    }
+    public String readFile() {
+        try {
+            String id;
+            try (Scanner sc = new Scanner(new File(filePath))) {
+                id = "";
+                while (sc.hasNextLine()) {
+                    id = sc.nextLine();
+                }
+            }
+            return id;
+        } catch (Exception e) {
+            Log.print(e);
+            return null;
+        }
+    }
+
 
     @Override
     public void deallocateHostForVm(Vm vm) {
