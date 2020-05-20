@@ -102,20 +102,13 @@ public class CustomVmAllocationPolicy extends VmAllocationPolicy {
                         lastIndex = --lastIndex % hostList.size();
                     }
                 }else if(vmAllocationPolicy.equalsIgnoreCase(CSVP)){
+                    int mid = CloudSimAssignmentConstent.totalVms / 2;
                     for (int i = 0; i < freePesTmp.size(); i++) {
-                        if (freePesTmp.get(i) > max && idx < 5) {
+                        if (freePesTmp.get(i) > max && vm.getId() < mid) {
                             max = freePesTmp.get(i);
                             idx = i;
-                        } else if (idx > 5 &&freePesTmp.get(i) < min && freePesTmp.get(i) > requiredPes) {
+                        } else if (vm.getId() >= mid &&freePesTmp.get(i) < min && freePesTmp.get(i) > requiredPes) {
                             min = freePesTmp.get(i);
-                            idx = i;
-                        }
-                    }
-                }else {
-                    //default worst fit
-                    for (int i = 0; i < freePesTmp.size(); i++) {
-                        if (freePesTmp.get(i) > max) {
-                            max = freePesTmp.get(i);
                             idx = i;
                         }
                     }

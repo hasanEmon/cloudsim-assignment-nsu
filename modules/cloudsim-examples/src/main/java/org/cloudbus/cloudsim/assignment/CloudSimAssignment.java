@@ -71,7 +71,7 @@ public class CloudSimAssignment {
 				int range = max - min + 1;
 				int peNumber = min + (int) (Math.random() * range);
 				randomPes.add(peNumber) ;
-//				int[] test = {5,2,6,1,3,5,1,3,4,2};
+//				int[] test = {5,4,3,2,6,2,2,3,2,4};
 //				randomPes.add(test[i]) ;
 			}
 			String vmm = "Xen"; // VMM name
