@@ -175,11 +175,11 @@ public class CustomVmAllocationPolicy extends VmAllocationPolicy {
         List<Integer> pesTmp = new ArrayList<>(this.getFreePes());
         int hostTotal = pesTmp.size();
         for (int i = 0; i < pesTmp.size(); i++) {
-            if (pesTmp.get(i) == 0) {
+            if (pesTmp.get(i) == 10) {
                 hostFree++;
-            } else if (pesTmp.get(i) < this.getHostList().get(i).getNumberOfPes() / 2) {
-                hostUnderU++;
             } else if (pesTmp.get(i) >= this.getHostList().get(i).getNumberOfPes() / 2) {
+                hostUnderU++;
+            } else if (pesTmp.get(i) < this.getHostList().get(i).getNumberOfPes() / 2) {
                 hostOverU++;
             }
         }
