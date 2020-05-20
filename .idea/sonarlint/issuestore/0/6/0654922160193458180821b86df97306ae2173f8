@@ -1,0 +1,10 @@
+
+l	java:S117Ì"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÉÀÎÄøÿÿÿÿ
+H
+java:S1135"2Complete the task associated to this TODO comment.(ÆÉæ“
+a
+java:S30277"FPut single-quotes around ' ' to use the faster "indexOf(char)" method.(üù ùÿÿÿÿ
+o
+java:S2975¿"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(ÚÂ±Øÿÿÿÿÿ
+I
+java:S1135å"2Complete the task associated to this TODO comment.(æ¼É

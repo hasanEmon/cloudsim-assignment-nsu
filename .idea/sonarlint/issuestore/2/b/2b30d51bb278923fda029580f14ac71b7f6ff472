@@ -1,0 +1,62 @@
+
+J
+java:S1444"/Make this "public static vmTotalBW" field final(¤÷ÓÙúÿÿÿÿ
+]	java:S125	"<This block of commented-out lines of code should be removed.(¹ìîõùÿÿÿÿ8·ˆŸö¢.
+K
+java:S1444"0Make this "public static vmTotalMem" field final(®ßúÀüÿÿÿÿ
+k
+java:S1104"UMake vmCpuMips a static final constant or non-public and provide accessors if needed.(÷ğåæ
+M
+java:S1444"2Make this "public static hostTotalMem" field final(÷”‰øÿÿÿÿ
+L
+java:S1444"1Make this "public static hostCpuMips" field final(º¶ÿÿÿÿÿ
+J
+java:S1444
+".Make this "public static totalVms" field final(¤Ì˜;8†Ìñ¢.
+R
+java:S1444"0Make this "public static totalHosts" field final(â±Ñãûÿÿÿÿ8†Ìñ¢.
+p
+java:S1104"UMake vmTotalBW a static final constant or non-public and provide accessors if needed.(¤÷ÓÙúÿÿÿÿ
+q
+java:S1104"VMake vmTotalMem a static final constant or non-public and provide accessors if needed.(®ßúÀüÿÿÿÿ
+r
+java:S1104"WMake vmTotalCpus a static final constant or non-public and provide accessors if needed.(ÓùÉ“øÿÿÿÿ
+p
+java:S1104"ZMake vmTotalStorage a static final constant or non-public and provide accessors if needed.(üÂŞ¹
+J
+java:S1444"4Make this "public static vmTotalStorage" field final(üÂŞ¹
+r
+java:S1104"WMake hostCpuMips a static final constant or non-public and provide accessors if needed.(º¶ÿÿÿÿÿ
+w
+java:S1104"\Make hostTotalStorage a static final constant or non-public and provide accessors if needed.(ß·Ü„ıÿÿÿÿ
+n
+java:S1104"YMake hostTotalCpus a static final constant or non-public and provide accessors if needed.(„Î‘h
+k
+java:S1104"UMake vmMaxCpus a static final constant or non-public and provide accessors if needed.(‰¸ëë
+U
+java:S1118":Add a private constructor to hide the implicit public one.(˜òıÿÿÿÿ
+E
+java:S1444"/Make this "public static vmCpuMips" field final(÷ğåæ
+Q
+java:S1444"6Make this "public static hostTotalStorage" field final(ß·Ü„ıÿÿÿÿ
+p
+java:S1104
+"TMake totalVms a static final constant or non-public and provide accessors if needed.(¤Ì˜;8†Ìñ¢.
+m
+java:S1104"WMake hostTotalBW a static final constant or non-public and provide accessors if needed.(¦Òİ£
+E
+java:S1444"/Make this "public static vmMaxCpus" field final(‰¸ëë
+X
+java:S1444"6Make this "public static allocationPolicy" field final(Ü¬’¦øÿÿÿÿ8ƒôö¢.
+~
+java:S1104"\Make allocationPolicy a static final constant or non-public and provide accessors if needed.(Ü¬’¦øÿÿÿÿ8ƒôö¢.
+G
+java:S1444"1Make this "public static hostTotalBW" field final(¦Òİ£
+x
+java:S1104"VMake totalHosts a static final constant or non-public and provide accessors if needed.(â±Ñãûÿÿÿÿ8†Ìñ¢.
+s
+java:S1104"XMake hostTotalMem a static final constant or non-public and provide accessors if needed.(÷”‰øÿÿÿÿ
+L
+java:S1444"1Make this "public static vmTotalCpus" field final(ÓùÉ“øÿÿÿÿ
+H
+java:S1444"3Make this "public static hostTotalCpus" field final(„Î‘h

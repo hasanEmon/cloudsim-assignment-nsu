@@ -1,0 +1,30 @@
+
+c
+java:S2184b"HCast one of the operands of this multiplication operation to a "double".(íÁ°±ıÿÿÿÿ
+f	java:S117A"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÎÕéÌ
+e	java:S117C"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßë†#
+g	java:S117Ù"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ã®ñÕ
+Z
+java:S2259O"DA "NullPointerException" could be thrown; "broker" is nullable here.(æ¦Ë 
+v
+java:S14502"[Remove the "cloudletList" field and declare it as a local variable in the relevant methods.(ÇØ°õıÿÿÿÿ
+k
+java:S14505"URemove the "vmlist" field and declare it as a local variable in the relevant methods.(Ïí»‹
+U
+java:S1854K"?Remove this useless assignment to local variable "datacenter0".(ï§¸œ
+n
+java:S2293R"YReplace the type specification in this constructor call with the diamond operator ("<>").(¥«ÛL
+t
+java:S2293m"YReplace the type specification in this constructor call with the diamond operator ("<>").(ñº½œùÿÿÿÿ
+p
+java:S2293¢"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ÿˆ£‘
+p
+java:S2293¦"YReplace the type specification in this constructor call with the diamond operator ("<>").(ê‰ôÀ
+u
+java:S2293¿"YReplace the type specification in this constructor call with the diamond operator ("<>").(è­î–ûÿÿÿÿ
+u
+java:S2293Ş"YReplace the type specification in this constructor call with the diamond operator ("<>").(ñ»°ñøÿÿÿÿ
+P
+java:S1874"9Remove this use of "getCloudletStatus"; it is deprecated.(Ñ÷Ğû
+F
+java:S1481K"0Remove this unused "datacenter0" local variable.(ï§¸œ

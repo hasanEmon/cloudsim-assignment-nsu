@@ -1,0 +1,13 @@
+
+M
+java:S2589p"7Remove this expression which always evaluates to "true"( éÊ
+m
+java:S3776L"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(‰âáşÿÿÿÿ
+t
+java:S2293Q"YReplace the type specification in this constructor call with the diamond operator ("<>").(·™À­ıÿÿÿÿ
+V
+java:S1117R";Rename "freePes" which hides the field declared at line 42.(‘¤ôıüÿÿÿÿ
+B
+java:S1168ã"+Return an empty collection instead of null.(¥¹ï
+N
+java:S1135á"2Complete the task associated to this TODO comment.(¿æÆ¾ùÿÿÿÿ
