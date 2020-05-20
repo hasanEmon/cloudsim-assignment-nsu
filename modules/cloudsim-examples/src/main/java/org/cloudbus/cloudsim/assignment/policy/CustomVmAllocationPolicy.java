@@ -86,26 +86,20 @@ public class CustomVmAllocationPolicy extends VmAllocationPolicy {
 
                 if (vmAllocationPolicy.equalsIgnoreCase(BEST_FIT) || vmAllocationPolicy.equalsIgnoreCase(BFD)) {
                     for (int i = 0; i < freePesTmp.size(); i++) {
-                        if (freePesTmp.get(i) < min && freePesTmp.get(i) > requiredPes) {
+                        if (freePesTmp.get(i) < min && freePesTmp.get(i) >= requiredPes) {
                             min = freePesTmp.get(i);
                             idx = i;
                         }
                     }
                 }else if (vmAllocationPolicy.equalsIgnoreCase(FIRST_FIT) || vmAllocationPolicy.equalsIgnoreCase(FFD)) {
-//                    List<Host> hostList = this.getHostList();
-//                    int lastIndex = hostList.size() - 1;
-//                    for (int i = 0; i < hostList.size(); i++) {
-//                        Host host = hostList.get(lastIndex);
-//                        if (host.isSuitableForVm(vm)) {
-//                            idx = lastIndex;
-//                        }
-//                        lastIndex = --lastIndex % hostList.size();
-//                    }
-                    for (int i = 0; i < freePesTmp.size(); i++) {
-                        if (freePesTmp.get(i) < min && freePesTmp.get(i) >= requiredPes) {
-                            min = freePesTmp.get(i);
-                            idx = i;
+                    List<Host> hostList = this.getHostList();
+                    int lastIndex = hostList.size() - 1;
+                    for (int i = 0; i < hostList.size(); i++) {
+                        Host host = hostList.get(lastIndex);
+                        if (host.isSuitableForVm(vm)) {
+                            idx = lastIndex;
                         }
+                        lastIndex = --lastIndex % hostList.size();
                     }
                 }else if(vmAllocationPolicy.equalsIgnoreCase(CSVP)){
                     int mid = CloudSimAssignmentConstent.totalVms / 2;
