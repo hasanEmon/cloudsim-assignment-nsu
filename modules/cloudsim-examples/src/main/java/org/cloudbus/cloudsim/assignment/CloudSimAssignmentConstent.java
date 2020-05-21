@@ -1,11 +1,11 @@
 package org.cloudbus.cloudsim.assignment;
 
 public class CloudSimAssignmentConstent {
-    public static String allocationPolicy = "bestfit"; // best fit
+//    public static String allocationPolicy = "bestfit"; // best fit
 //    public static String allocationPolicy = "firstfit"; // first fit
 //    public static String allocationPolicy = "BFD"; // best fit decreasing
 //    public static String allocationPolicy = "FFD"; // first fit decreasing
-//    public static String allocationPolicy = "CSVP";
+    public static String allocationPolicy = "CSVP";
     public static int totalVms = 10;
 //    public static int totalVms = 100;
 //    public static int totalVms = 1000;
