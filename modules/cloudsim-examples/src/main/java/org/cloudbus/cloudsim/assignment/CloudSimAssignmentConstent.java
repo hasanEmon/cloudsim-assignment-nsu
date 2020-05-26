@@ -1,22 +1,21 @@
 package org.cloudbus.cloudsim.assignment;
 
 public class CloudSimAssignmentConstent {
-    public static String allocationPolicy = "bestfit"; // best fit
-//    public static String allocationPolicy = "firstfit"; // first fit
-//    public static String allocationPolicy = "BFD"; // best fit decreasing
-//    public static String allocationPolicy = "FFD"; // first fit decreasing
-//    public static String allocationPolicy = "CSVP";
-    public static int totalVms = 10;
-//    public static int totalVms = 100;
-//    public static int totalVms = 1000;
-//    public static int totalVms = 5000;
-//    public static int totalVms = 7650; //1835007650
-    public static int totalHosts = 10;
-//    public static int totalHosts = 100;
-//    public static int totalHosts = 1000;
-//    public static int totalHosts = 5000;
-//    public static int totalHosts = 7650; //1835007650
-    public static int vmMaxCpus = 5; //IF USE RANDOM NUMBER CPU
+    public static String allocationPolicyBF = "bestfit"; // best fit
+    public static String allocationPolicyBFD = "BFD"; // best fit decreasing
+    public static String allocationPolicyFF = "firstfit"; // first fit
+    public static String allocationPolicyFFD = "FFD"; // first fit decreasing
+    public static String allocationPolicyCSVP = "CSVP";
+    public static int totalVms10 = 10;
+    public static int totalVms1000 = 1000;
+    public static int totalVms5000 = 5000;
+    public static int totalVms7650 = 7650; // ID 1835007650
+    public static double multiplyOf = 1;
+    public static int totalHosts10 = (int) (multiplyOf * totalVms10);
+    public static int totalHosts1000 = (int) (multiplyOf * totalVms1000);
+    public static int totalHosts5000 = (int) (multiplyOf * totalVms5000);
+    public static int totalHosts7650 = (int) (multiplyOf * totalVms7650); // ID 1835007650
+    public static int vmMaxCpus = 7; //IF USE RANDOM NUMBER CPU
     public static int vmCpuMips = 1000;
     public static int vmTotalMem = 2048;
     public static int vmTotalBW = 1000;

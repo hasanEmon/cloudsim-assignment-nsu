@@ -30,13 +30,52 @@ public class CloudSimAssignment {
 	private static List<Cloudlet> cloudletList;
 	/** The vmlist. */
 	private static List<Vm> vmlist;
+	private static List<Integer> randomCpus;
 
 	public static void main(String[] args) {
-		runApp();
+		randomCpus = new ArrayList<>();
+		int totalVms = 7650; // max, as max value is last 4 digits of ID
+		for(int i = 0; i < totalVms; i++) {//CREATING RANDOM PEs
+			// define the range
+			int max = CloudSimAssignmentConstent.vmMaxCpus;
+			int min = 1;
+			int range = max - min + 1;
+			int peNumber = min + (int) (Math.random() * range);
+			randomCpus.add(peNumber) ;
+		}
+
+		//executing for all algorithm for 10 vms
+		runApp(CloudSimAssignmentConstent.allocationPolicyBF, CloudSimAssignmentConstent.totalVms10,CloudSimAssignmentConstent.totalHosts10);
+		runApp(CloudSimAssignmentConstent.allocationPolicyBFD, CloudSimAssignmentConstent.totalVms10, CloudSimAssignmentConstent.totalHosts10);
+		runApp(CloudSimAssignmentConstent.allocationPolicyFF,CloudSimAssignmentConstent.totalVms10, CloudSimAssignmentConstent.totalHosts10);
+		runApp(CloudSimAssignmentConstent.allocationPolicyFFD, CloudSimAssignmentConstent.totalVms10, CloudSimAssignmentConstent.totalHosts10);
+		runApp(CloudSimAssignmentConstent.allocationPolicyCSVP,CloudSimAssignmentConstent.totalVms10, CloudSimAssignmentConstent.totalHosts10);
+
+		//executing for all algorithm for 1000 vms
+		runApp(CloudSimAssignmentConstent.allocationPolicyBF, CloudSimAssignmentConstent.totalVms1000, CloudSimAssignmentConstent.totalHosts1000);
+		runApp(CloudSimAssignmentConstent.allocationPolicyBFD, CloudSimAssignmentConstent.totalVms1000,  CloudSimAssignmentConstent.totalHosts1000);
+		runApp(CloudSimAssignmentConstent.allocationPolicyFF, CloudSimAssignmentConstent.totalVms1000,  CloudSimAssignmentConstent.totalHosts1000);
+		runApp(CloudSimAssignmentConstent.allocationPolicyFFD, CloudSimAssignmentConstent.totalVms1000, CloudSimAssignmentConstent.totalHosts1000);
+		runApp(CloudSimAssignmentConstent.allocationPolicyCSVP, CloudSimAssignmentConstent.totalVms1000, CloudSimAssignmentConstent.totalHosts1000);
+
+		//executing for all algorithm for 5000 vms
+		runApp(CloudSimAssignmentConstent.allocationPolicyBF, CloudSimAssignmentConstent.totalVms5000, CloudSimAssignmentConstent.totalHosts5000);
+		runApp(CloudSimAssignmentConstent.allocationPolicyBFD, CloudSimAssignmentConstent.totalVms5000, CloudSimAssignmentConstent.totalHosts5000);
+		runApp(CloudSimAssignmentConstent.allocationPolicyFF, CloudSimAssignmentConstent.totalVms5000, CloudSimAssignmentConstent.totalHosts5000);
+		runApp(CloudSimAssignmentConstent.allocationPolicyFFD, CloudSimAssignmentConstent.totalVms5000, CloudSimAssignmentConstent.totalHosts5000);
+		runApp(CloudSimAssignmentConstent.allocationPolicyCSVP, CloudSimAssignmentConstent.totalVms5000, CloudSimAssignmentConstent.totalHosts5000);
+
+		//executing for all algorithm for 7650 vms
+		runApp(CloudSimAssignmentConstent.allocationPolicyBF, CloudSimAssignmentConstent.totalVms7650, CloudSimAssignmentConstent.totalHosts7650);
+		runApp(CloudSimAssignmentConstent.allocationPolicyBFD, CloudSimAssignmentConstent.totalVms7650, CloudSimAssignmentConstent.totalHosts7650);
+		runApp(CloudSimAssignmentConstent.allocationPolicyFF, CloudSimAssignmentConstent.totalVms7650, CloudSimAssignmentConstent.totalHosts7650);
+		runApp(CloudSimAssignmentConstent.allocationPolicyFFD, CloudSimAssignmentConstent.totalVms7650, CloudSimAssignmentConstent.totalHosts7650);
+		runApp(CloudSimAssignmentConstent.allocationPolicyCSVP, CloudSimAssignmentConstent.totalVms7650, CloudSimAssignmentConstent.totalHosts7650);
+
 	}
 
-	private static void runApp() {
-		Log.printLine("Starting CloudSimAssignment...");
+	private static void runApp(String allocationPolicy, int totalVms, int totalHosts) {
+		Log.printLine("Starting CloudSimAssignment... for "+allocationPolicy +" algorithm");
 
 		try {
 			// First step: Initialize the CloudSim package. It should be called before creating any entities.
@@ -49,7 +88,7 @@ public class CloudSimAssignment {
 			// Second step: Create Datacenters
 			// Datacenters are the resource providers in CloudSim. We need at
 			// list one of them to run a CloudSim simulation
-			Datacenter datacenter0 = createDatacenter("Datacenter_0");
+			Datacenter datacenter0 = createDatacenter("Datacenter_0", allocationPolicy, totalHosts, totalVms);
 
 			// Third step: Create Broker
 			DatacenterBroker broker = createBroker();
@@ -64,28 +103,28 @@ public class CloudSimAssignment {
 			int ram = CloudSimAssignmentConstent.vmTotalMem; // vm memory (MB)
 			long bw = CloudSimAssignmentConstent.vmTotalBW;
 //			int pesNumber = 1; // number of cpus
-			int totalVms = CloudSimAssignmentConstent.totalVms;
+//			int totalVms = CloudSimAssignmentConstent.totalVms;
 
 			// For random number o f cpus
-			List<Integer> randomPes = new ArrayList<>(totalVms) ;
+			List<Integer> randomPes = new ArrayList<>() ;
 			for(int i = 0; i < totalVms; i++) {//CREATING RANDOM PEs
 				// define the range
-				int max = CloudSimAssignmentConstent.vmMaxCpus;
-				int min = 1;
-				int range = max - min + 1;
-				int peNumber = min + (int) (Math.random() * range);
-//				randomPes.add(peNumber) ;
-				int[] test = {5,4,3,2,6,2,2,3,2,4};
-				randomPes.add(test[i]) ;
+//				int max = CloudSimAssignmentConstent.vmMaxCpus;
+//				int min = 1;
+//				int range = max - min + 1;
+//				int peNumber = min + (int) (Math.random() * range);
+				randomPes.add(randomCpus.get(i)) ;
+//				int[] test = {5,4,3,2,6,2,2,3,2,4};
+//				randomPes.add(test[i]) ;
 			}
 			String vmm = "Xen"; // VMM name
 
-			if(CloudSimAssignmentConstent.allocationPolicy.equalsIgnoreCase("FFD")
-					|| CloudSimAssignmentConstent.allocationPolicy.equalsIgnoreCase("BFD")) {
+			if(allocationPolicy.equalsIgnoreCase("FFD")
+					|| allocationPolicy.equalsIgnoreCase("BFD")) {
 				randomPes.sort(Collections.reverseOrder());
 			}
 
-			if (CloudSimAssignmentConstent.allocationPolicy.equalsIgnoreCase("CSVP")) {
+			if (allocationPolicy.equalsIgnoreCase("CSVP")) {
 				int mid = randomPes.size()/2;
 				randomPes.subList(0, mid).sort(Comparator.reverseOrder());
 				randomPes.subList(mid, randomPes.size()).sort(Comparator.reverseOrder());
@@ -140,7 +179,7 @@ public class CloudSimAssignment {
 			List<Cloudlet> newList = broker.getCloudletReceivedList();
 			printCloudletList(newList);
 
-			Log.printLine("CloudSimAssignment finished!");
+			Log.printLine("CloudSimAssignment finished for " + allocationPolicy+" algorithm!!!");
 		} catch (Exception e) {
 			e.printStackTrace();
 			Log.printLine("Unwanted errors happen");
@@ -191,7 +230,7 @@ public class CloudSimAssignment {
 	 *
 	 * @return the datacenter
 	 */
-	public static Datacenter createDatacenter(String name) {
+	public static Datacenter createDatacenter(String name, String allocationPolicy, int totalHosts, int totalVms) {
 
 		// Here are the steps needed to create a PowerDatacenter:
 		// 1. We need to create a list to store
@@ -217,7 +256,7 @@ public class CloudSimAssignment {
 		long storage = CloudSimAssignmentConstent.hostTotalStorage; // host storage
 		int bw = CloudSimAssignmentConstent.hostTotalBW;
 
-		int totalHosts = CloudSimAssignmentConstent.totalHosts ;
+//		int totalHosts = CloudSimAssignmentConstent.totalHosts ;
 
 		for (int i = 0; i < totalHosts; i++) {
 			hostList.add(
@@ -256,7 +295,7 @@ public class CloudSimAssignment {
 		// 6. Finally, we need to create a PowerDatacenter object.
 		Datacenter datacenter = null;
 		try {
-			datacenter = new Datacenter(name, characteristics, new CustomVmAllocationPolicy(hostList), storageList, 0);
+			datacenter = new Datacenter(name, characteristics, new CustomVmAllocationPolicy(hostList, allocationPolicy, totalVms), storageList, 0);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
