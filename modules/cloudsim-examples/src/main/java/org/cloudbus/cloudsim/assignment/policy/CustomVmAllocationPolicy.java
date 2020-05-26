@@ -4,7 +4,6 @@ import org.cloudbus.cloudsim.Host;
 import org.cloudbus.cloudsim.Log;
 import org.cloudbus.cloudsim.Vm;
 import org.cloudbus.cloudsim.VmAllocationPolicy;
-import org.cloudbus.cloudsim.assignment.CloudSimAssignmentConstent;
 import org.cloudbus.cloudsim.core.CloudSim;
 
 import java.io.BufferedWriter;
