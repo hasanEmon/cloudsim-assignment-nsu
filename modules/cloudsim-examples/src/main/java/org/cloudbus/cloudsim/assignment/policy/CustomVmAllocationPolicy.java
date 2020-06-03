@@ -131,8 +131,9 @@ public class CustomVmAllocationPolicy extends VmAllocationPolicy {
 //        StringBuilder builder = new StringBuilder();
         String INDENT = "   ";
         if (vm.getId ()==0) {//FIRST VM
-            Log.printLine("============================================================================");
-//            builder.append("============================================================================\n");
+            String line = String.format("===================================+%s+=========================================", selectedPolicy);
+            Log.printLine(line);
+//            builder.append(line).append("\n");
             Log.printLine("Vm ID" + INDENT + "Vm's PEs" + INDENT + "Host's ID" + INDENT + "Host's Allocated PEs" + INDENT + "Host's Free PEs");
 //            builder.append("Vm ID").append(INDENT).append("Vm's PEs").append(INDENT).append("Host's ID").append(INDENT)
 //                    .append("Host's Allocated PEs").append(INDENT).append("Host's Free PEs\n");
