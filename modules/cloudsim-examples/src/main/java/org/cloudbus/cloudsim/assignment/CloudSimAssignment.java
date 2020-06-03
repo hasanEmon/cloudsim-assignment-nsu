@@ -28,13 +28,17 @@ import java.util.*;
 public class CloudSimAssignment {
 	private static final String indent = "   " ;
 	private static List<Cloudlet> cloudletList;
-	/** The vmlist. */
 	private static List<Vm> vmlist;
 	private static List<Integer> randomCpus;
+	private static final String CSVP = "CSVP";
+	private static final String FFD = "FFD";
+	private static final String BFD = "BFD";
+	private static final String BEST_FIT = "bestfit";
+	private static final String FIRST_FIT = "firstfit";
 
 	public static void main(String[] args) {
 		randomCpus = new ArrayList<>();
-		int totalVms = 7650; // max, as max value is last 4 digits of ID
+		int totalVms = CloudSimAssignmentConstent.totalHosts7650; // max, as max value is last 4 digits of ID
 		for(int i = 0; i < totalVms; i++) {//CREATING RANDOM PEs
 			// define the range
 			int max = CloudSimAssignmentConstent.vmMaxCpus;
@@ -119,12 +123,11 @@ public class CloudSimAssignment {
 			}
 			String vmm = "Xen"; // VMM name
 
-			if(allocationPolicy.equalsIgnoreCase("FFD")
-					|| allocationPolicy.equalsIgnoreCase("BFD")) {
+			if(allocationPolicy.equalsIgnoreCase(FFD) || allocationPolicy.equalsIgnoreCase(BFD)) {
 				randomPes.sort(Collections.reverseOrder());
 			}
 
-			if (allocationPolicy.equalsIgnoreCase("CSVP")) {
+			if (allocationPolicy.equalsIgnoreCase(CSVP)) {
 				int mid = randomPes.size()/2;
 				randomPes.subList(0, mid).sort(Comparator.reverseOrder());
 				randomPes.subList(mid, randomPes.size()).sort(Comparator.reverseOrder());

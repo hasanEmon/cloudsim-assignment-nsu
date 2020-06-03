@@ -1,11 +1,11 @@
 package org.cloudbus.cloudsim.assignment;
 
 public class CloudSimAssignmentConstent {
-    public static String allocationPolicyBF = "bestfit"; // best fit
-    public static String allocationPolicyBFD = "BFD"; // best fit decreasing
-    public static String allocationPolicyFF = "firstfit"; // first fit
-    public static String allocationPolicyFFD = "FFD"; // first fit decreasing
-    public static String allocationPolicyCSVP = "CSVP";
+    public static final String allocationPolicyBF = "bestfit"; // best fit
+    public static final String allocationPolicyBFD = "BFD"; // best fit decreasing
+    public static final String allocationPolicyFF = "firstfit"; // first fit
+    public static final String allocationPolicyFFD = "FFD"; // first fit decreasing
+    public static final String allocationPolicyCSVP = "CSVP";
     public static int totalVms10 = 10;
     public static int totalVms1000 = 1000;
     public static int totalVms5000 = 5000;
@@ -25,4 +25,5 @@ public class CloudSimAssignmentConstent {
     public static int hostTotalMem = 40960;
     public static int hostTotalBW = 10000;
     public static int hostTotalStorage = 100000;
+
 }
