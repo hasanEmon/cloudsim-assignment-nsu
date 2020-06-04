@@ -109,7 +109,8 @@ public class CloudSimAssignment {
 				int max = CloudSimAssignmentConstent.vmMaxCpus;
 				int min = 1;
 				int range = max - min + 1;
-				int peNumber = min + (int) (Math.random() * range);
+				Random random = new Random();
+				int peNumber = min + random.nextInt(range);
 				randomPes.add(peNumber);
 //				int[] test = {5,4,3,2,6,2,2,3,2,4};
 //				randomPes.add(test[i]) ;
