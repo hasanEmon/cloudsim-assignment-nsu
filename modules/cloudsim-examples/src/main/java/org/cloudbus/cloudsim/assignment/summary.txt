@@ -1,0 +1,200 @@
+====================================================================
+Selected algorithm   : bestfit
+Total VM            : 10
+Total Host          : 10
+Over Utilized Host  : 3
+Under Utilized Host : 1
+Free Host           : 6
+====================================================================
+====================================================================
+Selected algorithm   : BFD
+Total VM            : 10
+Total Host          : 10
+Over Utilized Host  : 3
+Under Utilized Host : 1
+Free Host           : 6
+====================================================================
+====================================================================
+Selected algorithm   : firstfit
+Total VM            : 10
+Total Host          : 10
+Over Utilized Host  : 4
+Under Utilized Host : 0
+Free Host           : 6
+====================================================================
+====================================================================
+Selected algorithm   : FFD
+Total VM            : 10
+Total Host          : 10
+Over Utilized Host  : 3
+Under Utilized Host : 1
+Free Host           : 6
+====================================================================
+====================================================================
+Selected algorithm   : CSVP
+Total VM            : 10
+Total Host          : 10
+Over Utilized Host  : 3
+Under Utilized Host : 2
+Free Host           : 5
+====================================================================
+====================================================================
+Selected algorithm   : bestfit
+Total VM            : 100
+Total Host          : 100
+Over Utilized Host  : 36
+Under Utilized Host : 1
+Free Host           : 63
+====================================================================
+====================================================================
+Selected algorithm   : BFD
+Total VM            : 100
+Total Host          : 100
+Over Utilized Host  : 35
+Under Utilized Host : 0
+Free Host           : 65
+====================================================================
+====================================================================
+Selected algorithm   : firstfit
+Total VM            : 100
+Total Host          : 100
+Over Utilized Host  : 36
+Under Utilized Host : 1
+Free Host           : 63
+====================================================================
+====================================================================
+Selected algorithm   : FFD
+Total VM            : 100
+Total Host          : 100
+Over Utilized Host  : 35
+Under Utilized Host : 0
+Free Host           : 65
+====================================================================
+====================================================================
+Selected algorithm   : CSVP
+Total VM            : 100
+Total Host          : 100
+Over Utilized Host  : 31
+Under Utilized Host : 19
+Free Host           : 50
+====================================================================
+====================================================================
+Selected algorithm   : bestfit
+Total VM            : 1000
+Total Host          : 1000
+Over Utilized Host  : 354
+Under Utilized Host : 1
+Free Host           : 645
+====================================================================
+====================================================================
+Selected algorithm   : BFD
+Total VM            : 1000
+Total Host          : 1000
+Over Utilized Host  : 35    3
+Under Utilized Host : 1
+Free Host           : 646
+====================================================================
+====================================================================
+Selected algorithm   : firstfit
+Total VM            : 1000
+Total Host          : 1000
+Over Utilized Host  : 355
+Under Utilized Host : 0
+Free Host           : 645
+====================================================================
+====================================================================
+Selected algorithm   : FFD
+Total VM            : 1000
+Total Host          : 1000
+Over Utilized Host  : 353
+Under Utilized Host : 1
+Free Host           : 646
+====================================================================
+====================================================================
+Selected algorithm   : CSVP
+Total VM            : 1000
+Total Host          : 1000
+Over Utilized Host  : 323
+Under Utilized Host : 177
+Free Host           : 500
+====================================================================
+====================================================================
+Selected algorithm   : bestfit
+Total VM            : 5000
+Total Host          : 5000
+Over Utilized Host  : 1735
+Under Utilized Host : 0
+Free Host           : 3265
+====================================================================
+====================================================================
+Selected algorithm   : BFD
+Total VM            : 5000
+Total Host          : 5000
+Over Utilized Host  : 1734
+Under Utilized Host : 1
+Free Host           : 3265
+====================================================================
+====================================================================
+Selected algorithm   : firstfit
+Total VM            : 5000
+Total Host          : 5000
+Over Utilized Host  : 1735
+Under Utilized Host : 1
+Free Host           : 3264
+====================================================================
+====================================================================
+Selected algorithm   : FFD
+Total VM            : 5000
+Total Host          : 5000
+Over Utilized Host  : 1734
+Under Utilized Host : 1
+Free Host           : 3265
+====================================================================
+====================================================================
+Selected algorithm   : CSVP
+Total VM            : 5000
+Total Host          : 5000
+Over Utilized Host  : 1590
+Under Utilized Host : 910
+Free Host           : 2500
+====================================================================
+====================================================================
+Selected algorithm   : bestfit
+Total VM            : 7650
+Total Host          : 7650
+Over Utilized Host  : 2659
+Under Utilized Host : 1
+Free Host           : 4990
+====================================================================
+====================================================================
+Selected algorithm   : BFD
+Total VM            : 7650
+Total Host          : 7650
+Over Utilized Host  : 2659
+Under Utilized Host : 0
+Free Host           : 4991
+====================================================================
+====================================================================
+Selected algorithm   : firstfit
+Total VM            : 7650
+Total Host          : 7650
+Over Utilized Host  : 2659
+Under Utilized Host : 1
+Free Host           : 4990
+====================================================================
+====================================================================
+Selected algorithm   : FFD
+Total VM            : 7650
+Total Host          : 7650
+Over Utilized Host  : 2659
+Under Utilized Host : 0
+Free Host           : 4991
+====================================================================
+====================================================================
+Selected algorithm   : CSVP
+Total VM            : 7650
+Total Host          : 7650
+Over Utilized Host  : 2434
+Under Utilized Host : 1391
+Free Host           : 3825
+====================================================================
