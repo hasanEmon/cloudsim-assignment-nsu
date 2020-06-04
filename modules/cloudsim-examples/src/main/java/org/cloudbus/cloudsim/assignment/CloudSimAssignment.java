@@ -32,8 +32,6 @@ public class CloudSimAssignment {
 	private static final String CSVP = "CSVP";
 	private static final String FFD = "FFD";
 	private static final String BFD = "BFD";
-	private static final String BEST_FIT = "bestfit";
-	private static final String FIRST_FIT = "firstfit";
 
 	public static void main(String[] args) {
 		//executing for all algorithm for 10 vms
@@ -197,13 +195,12 @@ public class CloudSimAssignment {
 		String indent = "    ";
 		Log.printLine();
 		Log.printLine("================================+++++ OUTPUT +++++==================================");
-		Log.printLine("Cloudlet ID" + indent + "STATUS" + indent
-				+ "Data center ID" + indent + "VM ID" + indent + "Time" + indent
-				+ "Start Time" + indent + "Finish Time");
+		Log.printLine("Cloudlet ID" + indent + "STATUS" + indent + "Data center ID" + indent +
+				"VM ID" + indent + "Time" + indent + "Start Time" + indent + "Finish Time");
 
 		DecimalFormat dft = new DecimalFormat("###.##");
-		for (int i = 0; i < size; i++) {
-			cloudlet = list.get(i);
+		for (Cloudlet value : list) {
+			cloudlet = value;
 			Log.print(indent + cloudlet.getCloudletId() + indent + indent);
 
 			if (cloudlet.getStatus() == Cloudlet.SUCCESS) {

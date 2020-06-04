@@ -11,7 +11,7 @@ public class CloudSimAssignmentConstent {
     public static int totalVms1000 = 1000;
     public static int totalVms5000 = 5000;
     public static int totalVms7650 = 7650; // ID 1835007650
-    public static double multiplyOf = 0.5;
+    public static double multiplyOf = 1;
     public static int totalHosts10 = (int) (multiplyOf * totalVms10);
     public static int totalHosts100 = (int) (multiplyOf * totalVms100);
     public static int totalHosts1000 = (int) (multiplyOf * totalVms1000);

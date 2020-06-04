@@ -9,6 +9,8 @@ import org.cloudbus.cloudsim.core.CloudSim;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class CustomVmAllocationPolicy extends VmAllocationPolicy {
@@ -19,9 +21,10 @@ public class CustomVmAllocationPolicy extends VmAllocationPolicy {
     private static final String FIRST_FIT = "firstfit";
     private int totalVms;
     private String allocationPolicy;
-    private final String base = System.getProperty("user.dir");
-    private final String summary = base + "\\modules\\cloudsim-examples\\src\\main\\java\\org\\cloudbus\\cloudsim\\assignment\\summary.txt";
-    private final String allocacation = base + "\\modules\\cloudsim-examples\\src\\main\\java\\org\\cloudbus\\cloudsim\\assignment\\allocation.txt";
+    private final String home = System.getProperty("user.dir");
+    private final Path path = Paths.get(home, "modules", "cloudsim-examples", "src", "main", "java", "org", "cloudbus", "cloudsim", "assignment", "summary.txt");
+    private final String summary = path.toString();
+//    private final String allocacation = base + "\\modules\\cloudsim-examples\\src\\main\\java\\org\\cloudbus\\cloudsim\\assignment\\allocation.txt";
 
     /**
      * The map between each VM and its allocated host.
@@ -147,10 +150,10 @@ public class CustomVmAllocationPolicy extends VmAllocationPolicy {
 //                .append(INDENT).append(INDENT).append(INDENT).append(vm.getHost().getId()).append(INDENT).append(INDENT)
 //                .append(INDENT).append(INDENT).append(hostAllocatedPes).append(INDENT).append(INDENT).append(INDENT)
 //                .append(INDENT).append(INDENT).append(INDENT).append(INDENT).append(hostFreePesAfterAfterAllocation);
-//        this.writeFile(builder.toString(), allocacation);
+//        this.writeFile(builder.toString(), summary);
         if (vm.getId() == totalVms -1) {//LAST VM
             Log.printLine("============================================================================");
-//            this.writeFile("============================================================================", allocacation);
+//            this.writeFile("============================================================================", summary);
             printHostAllocation(selectedPolicy);
         }
     }
