@@ -29,7 +29,6 @@ public class CloudSimAssignment {
 	private static final String indent = "   " ;
 	private static List<Cloudlet> cloudletList;
 	private static List<Vm> vmlist;
-	private static List<Integer> randomCpus;
 	private static final String CSVP = "CSVP";
 	private static final String FFD = "FFD";
 	private static final String BFD = "BFD";
@@ -37,23 +36,19 @@ public class CloudSimAssignment {
 	private static final String FIRST_FIT = "firstfit";
 
 	public static void main(String[] args) {
-		randomCpus = new ArrayList<>();
-		int totalVms = CloudSimAssignmentConstent.totalHosts7650; // max, as max value is last 4 digits of ID
-		for(int i = 0; i < totalVms; i++) {//CREATING RANDOM PEs
-			// define the range
-			int max = CloudSimAssignmentConstent.vmMaxCpus;
-			int min = 1;
-			int range = max - min + 1;
-			int peNumber = min + (int) (Math.random() * range);
-			randomCpus.add(peNumber) ;
-		}
-
 		//executing for all algorithm for 10 vms
 		runApp(CloudSimAssignmentConstent.allocationPolicyBF, CloudSimAssignmentConstent.totalVms10,CloudSimAssignmentConstent.totalHosts10);
 		runApp(CloudSimAssignmentConstent.allocationPolicyBFD, CloudSimAssignmentConstent.totalVms10, CloudSimAssignmentConstent.totalHosts10);
 		runApp(CloudSimAssignmentConstent.allocationPolicyFF,CloudSimAssignmentConstent.totalVms10, CloudSimAssignmentConstent.totalHosts10);
 		runApp(CloudSimAssignmentConstent.allocationPolicyFFD, CloudSimAssignmentConstent.totalVms10, CloudSimAssignmentConstent.totalHosts10);
 		runApp(CloudSimAssignmentConstent.allocationPolicyCSVP,CloudSimAssignmentConstent.totalVms10, CloudSimAssignmentConstent.totalHosts10);
+
+		//executing for all algorithm for 100 vms
+		runApp(CloudSimAssignmentConstent.allocationPolicyBF, CloudSimAssignmentConstent.totalVms100,CloudSimAssignmentConstent.totalHosts100);
+		runApp(CloudSimAssignmentConstent.allocationPolicyBFD, CloudSimAssignmentConstent.totalVms100, CloudSimAssignmentConstent.totalHosts100);
+		runApp(CloudSimAssignmentConstent.allocationPolicyFF,CloudSimAssignmentConstent.totalVms100, CloudSimAssignmentConstent.totalHosts100);
+		runApp(CloudSimAssignmentConstent.allocationPolicyFFD, CloudSimAssignmentConstent.totalVms100, CloudSimAssignmentConstent.totalHosts100);
+		runApp(CloudSimAssignmentConstent.allocationPolicyCSVP,CloudSimAssignmentConstent.totalVms100, CloudSimAssignmentConstent.totalHosts100);
 
 		//executing for all algorithm for 1000 vms
 		runApp(CloudSimAssignmentConstent.allocationPolicyBF, CloudSimAssignmentConstent.totalVms1000, CloudSimAssignmentConstent.totalHosts1000);
@@ -112,12 +107,12 @@ public class CloudSimAssignment {
 			// For random number o f cpus
 			List<Integer> randomPes = new ArrayList<>() ;
 			for(int i = 0; i < totalVms; i++) {//CREATING RANDOM PEs
-				// define the range
-//				int max = CloudSimAssignmentConstent.vmMaxCpus;
-//				int min = 1;
-//				int range = max - min + 1;
-//				int peNumber = min + (int) (Math.random() * range);
-				randomPes.add(randomCpus.get(i)) ;
+				 //define the range
+				int max = CloudSimAssignmentConstent.vmMaxCpus;
+				int min = 1;
+				int range = max - min + 1;
+				int peNumber = min + (int) (Math.random() * range);
+				randomPes.add(peNumber);
 //				int[] test = {5,4,3,2,6,2,2,3,2,4};
 //				randomPes.add(test[i]) ;
 			}
