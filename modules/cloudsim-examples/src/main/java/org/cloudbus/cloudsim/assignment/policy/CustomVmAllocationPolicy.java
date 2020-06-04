@@ -24,7 +24,6 @@ public class CustomVmAllocationPolicy extends VmAllocationPolicy {
     private final String home = System.getProperty("user.dir");
     private final Path path = Paths.get(home, "modules", "cloudsim-examples", "src", "main", "java", "org", "cloudbus", "cloudsim", "assignment", "summary.txt");
     private final String summary = path.toString();
-//    private final String allocacation = base + "\\modules\\cloudsim-examples\\src\\main\\java\\org\\cloudbus\\cloudsim\\assignment\\allocation.txt";
 
     /**
      * The map between each VM and its allocated host.
