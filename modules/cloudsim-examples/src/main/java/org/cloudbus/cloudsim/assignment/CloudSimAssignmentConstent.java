@@ -17,7 +17,7 @@ public class CloudSimAssignmentConstent {
     public static int totalHosts1000 = (int) (multiplyOf * totalVms1000);
     public static int totalHosts5000 = (int) (multiplyOf * totalVms5000);
     public static int totalHosts7650 = (int) (multiplyOf * totalVms7650); // ID 1835007650
-    public static int vmMaxCpus = 5; //IF USE RANDOM NUMBER CPU
+    public static int vmMaxCpus = 6; //IF USE RANDOM NUMBER CPU
     public static int vmCpuMips = 1000;
     public static int vmTotalMem = 2048;
     public static int vmTotalBW = 1000;

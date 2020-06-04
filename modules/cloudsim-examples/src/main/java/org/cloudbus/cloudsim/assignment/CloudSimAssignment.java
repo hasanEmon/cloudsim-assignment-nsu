@@ -29,11 +29,27 @@ public class CloudSimAssignment {
 	private static final String indent = "   " ;
 	private static List<Cloudlet> cloudletList;
 	private static List<Vm> vmlist;
+	private static List<Integer> randomCpus;
 	private static final String CSVP = "CSVP";
 	private static final String FFD = "FFD";
 	private static final String BFD = "BFD";
 
 	public static void main(String[] args) {
+		randomCpus = new ArrayList<>() ;
+		// maz random pes size as id
+		// creating the random before to test the same pes passing
+		// to different algorithm and observe the output
+		int size = CloudSimAssignmentConstent.totalVms7650;
+		for(int i = 0; i < size; i++) {
+			//define the range
+			int max = CloudSimAssignmentConstent.vmMaxCpus;
+			int min = 1;
+			int range = max - min + 1;
+			Random random = new Random();
+			int peNumber = min + random.nextInt(range);
+			randomCpus.add(peNumber);
+		}
+		// executing all the scenario at one go to faster test
 		//executing for all algorithm for 10 vms
 		runApp(CloudSimAssignmentConstent.allocationPolicyBF, CloudSimAssignmentConstent.totalVms10,CloudSimAssignmentConstent.totalHosts10);
 		runApp(CloudSimAssignmentConstent.allocationPolicyBFD, CloudSimAssignmentConstent.totalVms10, CloudSimAssignmentConstent.totalHosts10);
@@ -105,15 +121,8 @@ public class CloudSimAssignment {
 			// For random number o f cpus
 			List<Integer> randomPes = new ArrayList<>() ;
 			for(int i = 0; i < totalVms; i++) {//CREATING RANDOM PEs
-				 //define the range
-				int max = CloudSimAssignmentConstent.vmMaxCpus;
-				int min = 1;
-				int range = max - min + 1;
-				Random random = new Random();
-				int peNumber = min + random.nextInt(range);
-				randomPes.add(peNumber);
-//				int[] test = {5,4,3,2,6,2,2,3,2,4};
-//				randomPes.add(test[i]) ;
+				// getting the value from generated pes before according to total vm
+				randomPes.add(randomCpus.get(i));
 			}
 			String vmm = "Xen"; // VMM name
 
@@ -122,9 +131,9 @@ public class CloudSimAssignment {
 			}
 
 			if (allocationPolicy.equalsIgnoreCase(CSVP)) {
-				int mid = randomPes.size()/2;
-				randomPes.subList(0, mid).sort(Comparator.reverseOrder());
-				randomPes.subList(mid, randomPes.size()).sort(Comparator.reverseOrder());
+				int midId = randomPes.size()/2; // find mid to divide into 2
+				randomPes.subList(0, midId).sort(Comparator.reverseOrder()); // sorting the first half as rc list
+				randomPes.subList(midId, randomPes.size()).sort(Comparator.reverseOrder()); // sorting the first half as nrc list
 			}
 
 			// create VM list
